@@ -37,55 +37,60 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 src/
-├── api/                        → مسیر API‌ها (Route‌ها)
-│   ├── auth/                   → auth routes (login, logout, etc.)
-│   ├── tasks/                  → tasks CRUD API
-│   ├── attendance/             → حضور و غیاب
-│   └── users/                  → مدیریت کاربران
+├── app/                          → ریشه‌ی صفحات و API Routes
+│   ├── (auth)/                   → گروپ صفحات مربوط به احراز هویت
+│   │   ├── login/page.tsx        → صفحه ورود
+│   │   └── register/page.tsx     → صفحه ثبت‌نام
+│   ├── dashboard/                → داشبورد
+│   │   └── page.tsx
+│   ├── tasks/
+│   │   ├── page.tsx
+│   │   └── [id]/page.tsx
+│   ├── attendance/
+│   │   ├── page.tsx
+│   │   └── history/page.tsx
+│   ├── team/page.tsx
+│   ├── settings/page.tsx
+│   └── api/                      → API Routes (به جای /pages/api)
+│       ├── auth/
+│       │   └── [...nextauth]/route.ts
+│       ├── tasks/route.ts
+│       ├── attendance/route.ts
+│       └── users/route.ts
 │
-├── components/                 → کامپوننت‌های بازاستفاده‌پذیر
-│   ├── ui/                     → کامپوننت‌های UI مثل Button, Input, Modal
-│   ├── layout/                 → نوار کناری، نوار بالا، هدر و فوتر
-│   └── shared/                 → کامپوننت‌های مشترک مثل کارت‌ها، توستر، آواتار
+├── components/
+│   ├── ui/                       → UI Components مثل Button، Input
+│   ├── layout/                   → Layoutهای صفحه مثل Sidebar
+│   └── shared/                   → Avatar، Toast، Card، ...
 │
-├── context/                    → Context API‌ها (مثلاً AuthContext)
-│   ├── AuthContext.tsx         → مدیریت وضعیت احراز هویت
-│   └── TaskContext.tsx         → مدیریت وضعیت تسک‌ها
+├── context/                      → Contextها مثل AuthContext
+│   └── AuthProvider.tsx
 │
-├── hooks/                      → Custom Hooks
-│   ├── useTasks.ts             → Hook برای تسک‌ها
-│   ├── useAuth.ts              → Hook برای احراز هویت
-│   └── useAttendance.ts        → Hook برای حضور و غیاب
+├── lib/                          → فایل‌های منطقی مثل authOptions یا db
+│   ├── auth.ts
+│   └── db.ts
 │
-├── pages/                      → صفحات پروژه
-│   ├── (auth)/                 → صفحات Auth (login, register, ...)
-│   │   ├── login.tsx
-│   │   └── register.tsx
-│   ├── dashboard/              → صفحه داشبورد
-│   │   ├── index.tsx
-│   │   └── components/         → کامپوننت‌های خاص داشبورد
-│   ├── tasks/                  → صفحه تسک‌ها
-│   │   ├── index.tsx           → نمایش لیست تسک‌ها
-│   │   └── [id]/               → صفحه تسک خاص
-│   ├── attendance/             → صفحه حضور و غیاب
-│   │   ├── index.tsx
-│   │   └── history.tsx         → تاریخچه حضور
-│   ├── team/                   → تیم و اعضا
-│   │   └── index.tsx
-│   └── settings/               → تنظیمات کاربر
-│       └── index.tsx
+├── hooks/
+│   ├── useTasks.ts
+│   └── useAuth.ts
 │
-├── services/                   → خدمات و API‌ها (fetch یا axios)
-│   ├── taskService.ts          → متدهای API برای تسک‌ها
-│   └── authService.ts          → متدهای API برای احراز هویت
+├── services/                     → توابع ارتباط با API
+│   ├── taskService.ts
+│   └── authService.ts
 │
-├── styles/                     → استایل‌ها
-│   ├── globals.css             → استایل‌های سراسری
-│   └── tailwind.config.js      → تنظیمات Tailwind
+├── utils/                        → توابع کمکی (helper functions)
+│   ├── validation.ts
+│   └── date.ts
 │
-├── utils/                      → ابزارهای کمکی و متدهای عمومی
-│   ├── dateUtils.ts            → توابع کمکی برای تاریخ
-│   ├── validationUtils.ts      → توابع کمکی برای اعتبارسنجی فرم‌ها
-│   └── authUtils.ts            → توابع کمکی برای احراز هویت
+├── styles/
+│   ├── globals.css
+│   └── tailwind.config.js
 │
-└── App.tsx                     → ریشه اپلیکیشن
+├── public/
+│   └── images/
+│       └── auth/
+│           └── login.png
+│
+└── types/                        → تایپ‌های TypeScript مشترک
+    ├── user.ts
+    └── task.ts
