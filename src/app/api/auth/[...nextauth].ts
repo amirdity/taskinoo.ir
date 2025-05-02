@@ -1,7 +1,7 @@
 // import React from 'react'
 
 const hello = () => {
-  return ("")
-}
+  return "";
+};
 
-export default hello
+export default hello;
