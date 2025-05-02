@@ -35,62 +35,61 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
 src/
-├── app/                          → ریشه‌ی صفحات و API Routes
-│   ├── (auth)/                   → گروپ صفحات مربوط به احراز هویت
-│   │   ├── login/page.tsx        → صفحه ورود
-│   │   └── register/page.tsx     → صفحه ثبت‌نام
-│   ├── dashboard/                → داشبورد
-│   │   └── page.tsx
-│   ├── tasks/
-│   │   ├── page.tsx
-│   │   └── [id]/page.tsx
-│   ├── attendance/
-│   │   ├── page.tsx
-│   │   └── history/page.tsx
-│   ├── team/page.tsx
-│   ├── settings/page.tsx
-│   └── api/                      → API Routes (به جای /pages/api)
-│       ├── auth/
-│       │   └── [...nextauth]/route.ts
-│       ├── tasks/route.ts
-│       ├── attendance/route.ts
-│       └── users/route.ts
+├── app/ → ریشه‌ی صفحات و API Routes
+│ ├── (auth)/ → گروپ صفحات مربوط به احراز هویت
+│ │ ├── login/page.tsx → صفحه ورود
+│ │ └── register/page.tsx → صفحه ثبت‌نام
+│ ├── dashboard/ → داشبورد
+│ │ └── page.tsx
+│ ├── tasks/
+│ │ ├── page.tsx
+│ │ └── [id]/page.tsx
+│ ├── attendance/
+│ │ ├── page.tsx
+│ │ └── history/page.tsx
+│ ├── team/page.tsx
+│ ├── settings/page.tsx
+│ └── api/ → API Routes (به جای /pages/api)
+│ ├── auth/
+│ │ └── [...nextauth]/route.ts
+│ ├── tasks/route.ts
+│ ├── attendance/route.ts
+│ └── users/route.ts
 │
 ├── components/
-│   ├── ui/                       → UI Components مثل Button، Input
-│   ├── layout/                   → Layoutهای صفحه مثل Sidebar
-│   └── shared/                   → Avatar، Toast، Card، ...
+│ ├── ui/ → UI Components مثل Button، Input
+│ ├── layout/ → Layoutهای صفحه مثل Sidebar
+│ └── shared/ → Avatar، Toast، Card، ...
 │
-├── context/                      → Contextها مثل AuthContext
-│   └── AuthProvider.tsx
+├── context/ → Contextها مثل AuthContext
+│ └── AuthProvider.tsx
 │
-├── lib/                          → فایل‌های منطقی مثل authOptions یا db
-│   ├── auth.ts
-│   └── db.ts
+├── lib/ → فایل‌های منطقی مثل authOptions یا db
+│ ├── auth.ts
+│ └── db.ts
 │
 ├── hooks/
-│   ├── useTasks.ts
-│   └── useAuth.ts
+│ ├── useTasks.ts
+│ └── useAuth.ts
 │
-├── services/                     → توابع ارتباط با API
-│   ├── taskService.ts
-│   └── authService.ts
+├── services/ → توابع ارتباط با API
+│ ├── taskService.ts
+│ └── authService.ts
 │
-├── utils/                        → توابع کمکی (helper functions)
-│   ├── validation.ts
-│   └── date.ts
+├── utils/ → توابع کمکی (helper functions)
+│ ├── validation.ts
+│ └── date.ts
 │
 ├── styles/
-│   ├── globals.css
-│   └── tailwind.config.js
+│ ├── globals.css
+│ └── tailwind.config.js
 │
 ├── public/
-│   └── images/
-│       └── auth/
-│           └── login.png
+│ └── images/
+│ └── auth/
+│ └── login.png
 │
-└── types/                        → تایپ‌های TypeScript مشترک
-    ├── user.ts
-    └── task.ts
+└── types/ → تایپ‌های TypeScript مشترک
+├── user.ts
+└── task.ts

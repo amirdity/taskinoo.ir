@@ -1,6 +1,6 @@
 import { LoginForm } from "@/components/ui/login-form";
 import { GalleryVerticalEnd } from "lucide-react";
-import login_png from "../../../../public/images/auth/login.png"
+import login_png from "../../../../public/images/auth/login.png";
 
 // import { LoginForm } from "@/components/login-form";
 import Image from "next/image";
