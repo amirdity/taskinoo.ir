@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2020", //? default was ES2017 we changed that because we want to be update
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": false, //?default was true but as you know this project based on type script
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
+    "noEmit": true, //? in production mode it should be false
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
