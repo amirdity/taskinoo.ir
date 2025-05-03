@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "check": "eslint .",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commit": "cz"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -44,7 +45,9 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
+    "commitizen": "^4.3.1",
     "cssnano": "^7.0.6",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.25.1",
     "eslint-config-next": "15.3.1",
     "eslint-config-prettier": "^10.1.2",
@@ -65,5 +68,10 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
