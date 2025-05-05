@@ -1,8 +1,8 @@
 // src/lib/auth.ts
 import GoogleProvider from "next-auth/providers/google";
-import { AuthOptions } from "next-auth";
+import { type NextAuthOptions } from "next-auth";
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -10,6 +10,9 @@ export const authOptions: AuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  // pages: {
+  //   signIn: "/(auth)/login",
+  // },
   callbacks: {
     async session({ session, token }) {
       if (session.user && token.sub) {
