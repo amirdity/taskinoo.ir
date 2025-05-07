@@ -1,13 +1,10 @@
+import { authOptions } from "@/lib/auth/option";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const user = await currentUser();
-  console.log(user, "user");
-
-  if (!user) {
-    return <div>کاربری یافت نشد.</div>;
-  }
+  const session = await getServerSession(authOptions);
+  console.log(session, "session");
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -25,19 +22,6 @@ export default async function Home() {
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
               src/app/page.tsx
             </code>
-            <div className="p-4">
-              <h1>خوش آمدی {user.firstName}!</h1>
-              <p>
-                <strong>Email:</strong> {user.emailAddresses[0].emailAddress}
-              </p>
-              <p>
-                <strong>ID:</strong> {user.id}
-              </p>
-              <p>
-                <strong>Username:</strong> {user.username ?? "ندارد"}
-              </p>
-              <pre className="bg-gray-100 mt-4 p-2 rounded">{JSON.stringify(user, null, 2)}</pre>
-            </div>
             .
           </li>
           <li className="tracking-[-.01em]">Save and see your changes instantly.</li>
