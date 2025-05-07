@@ -1,7 +1,12 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// app/dashboard/page.tsx
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
-const page = () => {
-  return <div></div>;
-};
+export default async function DashboardPage() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  const { data: todos } = await (await supabase).from("todos").select();
 
-export default page;
+  return <ul></ul>;
+}
