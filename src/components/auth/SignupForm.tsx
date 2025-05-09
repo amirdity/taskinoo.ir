@@ -2,37 +2,44 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useSignup } from "@/hooks/auth/useSignup";
+import { FormEvent, useState } from "react";
 // import { useRouter } from "next/navigation";
 
 export default function SignupForm() {
   // const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  console.log(message, "message");
+  // const [message, setMessage] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // console.log(message, "message");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setMessage("");
-
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await res.json();
-    setLoading(false);
-
-    if (!res.ok) {
-      setMessage(data.message || "خطا در ثبت‌نام");
-    } else {
-      setMessage("ثبت‌نام با موفقیت انجام شد 🎉");
-    }
+  const { mutate, isPending, error } = useSignup();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    mutate({ email: email, password: password });
   };
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setMessage("");
+
+  //   const res = await fetch("/api/auth/signup", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ email, password }),
+  //   });
+
+  //   const data = await res.json();
+  //   setLoading(false);
+
+  //   if (!res.ok) {
+  //     setMessage(data.message || "خطا در ثبت‌نام");
+  //   } else {
+  //     setMessage("ثبت‌نام با موفقیت انجام شد 🎉");
+  //   }
+  // };
   return (
     <div>
       <div className="grid gap-6">
@@ -60,11 +67,12 @@ export default function SignupForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button onClick={handleSubmit} className="w-full">
+        <Button onClick={handleSubmit} disabled={isPending} className="w-full">
           Login
         </Button>
-        {loading ? "در حال ارسال..." : "ثبت‌نام"}
-        {message && <p className="text-center text-sm mt-2 text-red-500">{message}</p>}
+        {/* {loading ? "در حال ارسال..." : "ثبت‌نام"}
+        {message && <p className="text-center text-sm mt-2 text-red-500">{message}</p>} */}
+        {error && <p>خطا: {error.message}</p>}
       </div>
     </div>
   );
