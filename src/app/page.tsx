@@ -51,6 +51,9 @@ export default async function Home() {
         /> */}
         </div>
       </main>
+      <footer className="flex justify-center w-100 h-100 items-center">
+        <div className="bg-amber-400 w-20 h-20"></div>
+      </footer>
     </>
   );
 }

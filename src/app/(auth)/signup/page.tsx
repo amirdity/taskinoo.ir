@@ -1,15 +1,10 @@
-"use client";
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton";
 import SignupForm from "@/components/auth/SignupForm";
 import { cn } from "@/lib/utils";
 import { GalleryVerticalEnd } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
-export default function SignupPage({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"form">) {
+export default function SignupPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -23,7 +18,7 @@ export default function SignupPage({
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <form className={cn("flex flex-col gap-6", className)} {...props}>
+            <form className={cn("flex flex-col gap-6")}>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Login to your account</h1>
                 <p className="text-balance text-sm text-muted-foreground">

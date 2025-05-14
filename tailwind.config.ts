@@ -20,10 +20,10 @@ const config: Config = {
     },
     extend: {
       colors: {
+        background: "hsl(var(--background))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
