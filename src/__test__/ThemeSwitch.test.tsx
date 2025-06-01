@@ -1,41 +1,48 @@
-// import { render, screen, fireEvent } from "@testing-library/react";
-// import ThemeSwitch from "./ThemeSwitch";
-// import { beforeEach, describe, expect, it, vi } from "vitest";
-// import nextThemes from "next-themes";
-
-// describe("ThemeSwitch", () => {
-//   beforeEach(() => {
-//     vi.spyOn(nextThemes, "useTheme").mockReturnValue({
-//       resolvedTheme: "dark",
-//       setTheme: vi.fn(),
-//     } as never);
-//   });
-
-//   it("renders sun icon when theme is dark", () => {
-//     render(<ThemeSwitch />);
-//     const sunIcon = screen.getByRole("img", { hidden: true }); // react-icons use SVGs that are treated as img
-//     expect(sunIcon).toBeInTheDocument();
-//   });
-
-//   it("calls setTheme with 'light' when sun icon is clicked", () => {
-//     const setThemeMock = vi.fn();
-//     vi.spyOn(nextThemes, "useTheme").mockReturnValue({
-//       resolvedTheme: "dark",
-//       setTheme: setThemeMock,
-//     } as never);
-
-//     render(<ThemeSwitch />);
-//     const sunIcon = screen.getByRole("img", { hidden: true });
-//     fireEvent.click(sunIcon);
-//     expect(setThemeMock).toHaveBeenCalledWith("light");
-//   });
-// });
-import { expect, test } from "vitest";
-import { render, screen } from "@testing-library/react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { render, screen, fireEvent } from "@testing-library/react";
 import ThemeSwitch from "@/components/ThemeSwitch";
-// import Page from "../app/page";
+import { vi, describe, expect, beforeEach, test } from "vitest";
 
-test("Page", () => {
-  render(<ThemeSwitch />);
-  expect(screen.getByRole("heading", { level: 1, name: "Home" })).toBeDefined();
+// گام اول: کل ماژول رو mock کن
+vi.mock("next-themes", () => ({
+  useTheme: vi.fn(),
+}));
+
+// گام دوم: حالا مستقیم useTheme رو ایمپورت کن
+import { useTheme } from "next-themes";
+
+describe("ThemeSwitch", () => {
+  const setThemeMock = vi.fn();
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  test("should show sun icon when theme is dark and call setTheme('light') on click", () => {
+    (useTheme as any).mockReturnValue({
+      resolvedTheme: "dark",
+      setTheme: setThemeMock,
+    });
+
+    render(<ThemeSwitch />);
+    const sunIcon = screen.getByTestId("theme-icon");
+    expect(sunIcon).toBeDefined();
+
+    fireEvent.click(sunIcon);
+    expect(setThemeMock).toHaveBeenCalledWith("light");
+  });
+
+  test("should show moon icon when theme is light and call setTheme('dark') on click", () => {
+    (useTheme as any).mockReturnValue({
+      resolvedTheme: "light",
+      setTheme: setThemeMock,
+    });
+
+    render(<ThemeSwitch />);
+    const moonIcon = screen.getByTestId("theme-icon");
+    expect(moonIcon).toBeDefined();
+
+    fireEvent.click(moonIcon);
+    expect(setThemeMock).toHaveBeenCalledWith("dark");
+  });
 });
