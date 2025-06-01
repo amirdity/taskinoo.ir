@@ -18,7 +18,7 @@ describe("ThemeSwitch", () => {
     vi.clearAllMocks();
   });
 
-  test("should show sun icon when theme is dark and call setTheme('light') on click", () => {
+  test("should show sun icon when theme is dark and call setTheme('light') on click (hello world)", () => {
     (useTheme as any).mockReturnValue({
       resolvedTheme: "dark",
       setTheme: setThemeMock,
