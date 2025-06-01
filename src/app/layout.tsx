@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans, Bokor } from "next/font/google";
 import "./globals.css";
 import Providers from "./Providers";
 
@@ -13,6 +13,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const notoDefault = Noto_Sans({
+  weight: ["900"],
+  subsets: ["latin"],
+  variable: "--font-noto-default",
+  display: "swap",
+});
+const bokor = Bokor({
+  subsets: ["latin"],
+  variable: "--font-bokor",
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Taskinoo",
   description: "task management",
@@ -24,8 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${notoDefault.variable} ${bokor.variable} antialiased`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,13 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* @tailwind base; */
-/* @tailwind components; */
-@tailwind utilities;
+@import "tailwindcss/preflight";
 
+@tailwind utilities;
 @custom-variant dark (&:is(.dark *));
 
 
-
+/* body {
+  font-family: var(--font-noto-sans);
+} */
 :root {
   --background: #fdedef;
   --radius: 0.625rem;
@@ -81,6 +82,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -92,7 +94,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --font-noto: var(--font-noto-default);
+  --font-bokor: var(--font-bokor);
+   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
@@ -125,4 +129,5 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
 }

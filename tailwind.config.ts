@@ -1,4 +1,3 @@
-// tailwind.config.ts
 import type { Config } from "tailwindcss";
 import tailwindAnimate from "tailwindcss-animate";
 
@@ -60,7 +59,14 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"],
+        // فونت پیش‌فرض (برای کلاس font-sans)
+        sans: "var(--font-noto-default)",
+        // bokor: "var(--font-bokor-default)",
+        bokor: "var(--font-bokor)",
+
+        // وزن‌های مختلف فونت به صورت کلاس جدا
+        notoLight: "var(--font-noto-light)",
+        notoBold: "var(--font-noto-bold)",
       },
     },
   },
