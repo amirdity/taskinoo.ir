@@ -9,8 +9,17 @@
 /* body {
   font-family: var(--font-noto-sans);
 } */
+html,
+body,
+root,
+:root,
+.dark,
+* {
+  transition: 5s
+}
+
 :root {
-  --background: #fdedef;
+  --background: #d4f1f4;
   --radius: 0.625rem;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -45,7 +54,7 @@
 }
 
 .dark {
-  --background: #807d75;
+  --background: #05445e;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -96,7 +105,7 @@
   --font-mono: var(--font-geist-mono);
   --font-noto: var(--font-noto-default);
   --font-bokor: var(--font-bokor);
-   --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-accent: var(--sidebar-accent);

@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 text-center">
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 text-center bg-background">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Taskinoo</h1>
         <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-xl">
           مدیریت دقیق و لحظه‌به‌لحظه وظایف تیم شما، فقط با Taskinoo.
@@ -26,13 +26,6 @@ export default async function Home() {
           <Link href="/register">
             <Button variant="outline">ثبت‌نام</Button>
           </Link>
-        </div>
-        <div className="mt-12 max-w-3xl">
-          {/* <img
-          src="/dashboard-preview.png"
-          alt="Taskinoo dashboard preview"
-          className="rounded-xl shadow-lg"
-        /> */}
         </div>
       </main>
       <footer className="flex justify-center w-100 h-100 items-center">
